@@ -32,7 +32,7 @@ USER 1000990000
 RUN wget https://jztkft.dl.sourceforge.net/project/projectorria/projeqtorV9.4.0.zip
 RUN unzip -q projeqtorV9.4.0.zip && rm projeqtorV9.4.0.zip
 
-RUN cp -r /home/projeqtor/ /opt/bitnami/phpmyadmin/
+RUN cp -r /home/projeqtor/* /opt/bitnami/phpmyadmin/
 
 RUN rm -r /home/*
 
