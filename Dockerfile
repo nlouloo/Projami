@@ -12,6 +12,9 @@ COPY files/ /home
 # Install packages 
 RUN apt-get update && apt-get upgrade &&  apt-get install wget vim htop zip unzip -y --no-install-recommends && apt-get autoclean && apt-get autoremove
 
+RUN echo "max_input_vars = 4000" >> /opt/bitnami/php/etc/php.ini
+RUN echo "max_input_vars = 4000" >> /opt/bitnami/php/lib/php.ini
+
 
 # Prepare phpmyadmin switch 
 RUN rm -r /opt/bitnami/phpmyadmin/*
