@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-ENV TZ='UTC'
+ENV TZ="America/New_York"
 
 USER 0
 
