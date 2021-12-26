@@ -9,6 +9,4 @@ RUN apt-get update && apt-get upgrade -y && apt-get install apache2 wget vim hto
 
 EXPOSE 8080 80
 
-USER 1000990000
-
 CMD ["apachectl", "-D", "FOREGROUND"]
