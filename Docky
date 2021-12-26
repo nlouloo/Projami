@@ -1,12 +1,3 @@
-FROM ubuntu:20.04
+FROM php:8.0-apache
 
-ARG DEBIAN_FRONTEND=noninteractive
-ENV TZ="Europe/Paris"
 
-USER 0
-
-RUN apt-get update && apt-get upgrade -y && apt-get install apache2 wget vim htop zip unzip -y --no-install-recommends 
-
-EXPOSE 8080 80
-
-CMD ["apachectl", "-D", "FOREGROUND"]
