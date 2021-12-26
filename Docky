@@ -6,7 +6,7 @@ FROM  ubuntu:latest
 USER 0
 
 # Install packages 
-RUN apt-get update && apt-get upgrade &&  apt-get install wget vim htop zip unzip -y --no-install-recommends && apt-get autoclean && apt-get autoremove
+RUN apt-get update && apt-get upgrade -y &&  apt-get install wget vim htop zip unzip -y --no-install-recommends && apt-get autoclean && apt-get autoremove
 
 
 
