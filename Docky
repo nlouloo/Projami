@@ -1,3 +1,4 @@
 FROM  silarhi/php-apache:latest
 
 
+EXPOSE 80
