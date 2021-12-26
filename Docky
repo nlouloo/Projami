@@ -1,6 +1,6 @@
 FROM registry.redhat.io/rhscl/httpd-24-rhel7
 
-
+USER 0
 RUN yum update && yum install  vim htop unzip wget php-fpm php-xml php-imap php-gd php-mbstring php-mysql php-zip -y
 
 RUN chown -R 1000990000:1000990000 /var/www/html
