@@ -3,6 +3,4 @@ FROM  silarhi/php-apache:latest
 
 EXPOSE 80
 
-WORKDIR /var/www/html
-
-CMD ["apachectl","-D","foreground"]
+WORKDIR /app
