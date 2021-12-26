@@ -10,7 +10,7 @@ USER 0
 COPY files/ /home
 
 # Install packages 
-RUN apt-get update && apt-get upgrade &&  apt-get install wget vim htop zip -y --no-install-recommends && apt-get autoclean && apt-get autoremove
+RUN apt-get update && apt-get upgrade &&  apt-get install wget vim htop zip unzip -y --no-install-recommends && apt-get autoclean && apt-get autoremove
 
 
 # Prepare phpmyadmin switch 
