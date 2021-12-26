@@ -18,5 +18,7 @@ RUN chown -R 1000990000:0 $wk-docker-build
 USER 1000990000
 
 RUN wget https://jztkft.dl.sourceforge.net/project/projectorria/projeqtorV9.4.0.zip
+RUN unzip -q projeqtorV9.4.0.zip && rm projeqtorV9.4.0.zip
+
 
 
