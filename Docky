@@ -1,4 +1,1 @@
 FROM  ubuntu/apache2:latest
-
-
-EXPOSE 8080
