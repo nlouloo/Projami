@@ -10,10 +10,10 @@ USER 0
 COPY files/ /home
 
 # Install packages 
-RUN apt-get update && apt-get upgrade &&  apt-get install wget vim htop zip -y --no-install-recommends  
+RUN apt-get update && apt-get upgrade &&  apt-get install wget vim htop zip -y --no-install-recommends && apt-get autoclean && apt-get autoremove
 
 
-RUN chown -R 1000990000:0 $wk-docker-build
+RUN chown -R 1000990000:1000990000 /home
 # Use of  NON-ROOT user
 USER 1000990000
 
