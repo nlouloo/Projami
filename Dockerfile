@@ -15,6 +15,11 @@ RUN apt-get update && apt-get upgrade &&  apt-get install wget vim htop zip unzi
 RUN echo "max_input_vars = 4000" >> /opt/bitnami/php/etc/php.ini
 RUN echo "max_input_vars = 4000" >> /opt/bitnami/php/lib/php.ini
 
+RUN echo "max_execution_time = 600" >> /opt/bitnami/php/etc/php.ini
+RUN echo "max_execution_time = 600" >> /opt/bitnami/php/lib/php.ini
+
+
+
 
 # Prepare phpmyadmin switch 
 RUN rm -r /opt/bitnami/phpmyadmin/*
