@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 
 USER 0
 
-RUN apt-get update && apt-get upgrade -y && apt-get install apache2 -y
+RUN apt-get update && apt-get upgrade -y && apt-get install apache2 wget vim htop zip unzip -y --no-install-recommends 
 
 EXPOSE 8080 80
 CMD ["apache2foreground"]
