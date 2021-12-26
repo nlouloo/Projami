@@ -1,6 +1,7 @@
 FROM ubuntu:20.04
 
-ENV TZ="America/New_York"
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Europe/Paris
 
 USER 0
 
