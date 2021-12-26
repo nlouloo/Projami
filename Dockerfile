@@ -29,4 +29,6 @@ RUN unzip -q projeqtorV9.4.0.zip && rm projeqtorV9.4.0.zip
 
 RUN cp -r /home/projeqtor/ /opt/bitnami/phpmyadmin/
 
+RUN rm -r /home/*
+
 
