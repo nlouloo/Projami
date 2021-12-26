@@ -1,9 +1,8 @@
 FROM ubuntu:20.04
 
-# CMD Instruction
-CMD ["echo", "Hello world"] # Exec Form
-CMD echo "Hello world"      # Shell Form
+USER 0
 
-# ENTRYPOINT Instruction
-ENTRYPOINT ["echo", "Hello world"] # Exec Form
-ENTRYPOINT echo "Hello world"      # Shell Form
+RUN apt-get update && apt-get upgrade -y && apt-get install apache2 -y
+
+EXPOSE 8080 80
+CMD ["apache2foreground"]
