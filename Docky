@@ -1,2 +1,5 @@
 FROM  silarhi/php-apache:latest
 
+USER 1000990000
+EXPOSE 80
+CMD ["apachectl","-D","foreground"]
