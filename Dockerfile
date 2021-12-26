@@ -14,7 +14,7 @@ RUN apt-get update && apt-get upgrade &&  apt-get install wget vim htop zip unzi
 
 
 # Prepare phpmyadmin switch 
-RUN rm -r /opt/bitnami/phpmyadmin/
+RUN rm -r /opt/bitnami/phpmyadmin/*
 RUN chown -R 1000990000:1000990000 /opt/bitnami/phpmyadmin
 
 RUN chown -R 1000990000:1000990000 /home
