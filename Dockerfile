@@ -1,7 +1,14 @@
 FROM  bitnami/phpmyadmin
 
-USER 0
+# Declare Build Time variables
+ARG user-docker-run = 1000990000
+ARG root-docker-build = 0
 
-RUN apt-get update && apt-get upgrade && apt-get install vim  zip -y 
 
-RUN whoami
+USER $root-docker-build
+COPY files/ /home
+
+
+USER $user-docker-run
+
+
