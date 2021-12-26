@@ -9,5 +9,5 @@ USER 0
 RUN apt-get update && apt-get upgrade -y &&  apt-get install wget vim htop zip unzip -y --no-install-recommends && apt-get autoclean && apt-get autoremove
 
 
-
+CMD ["/bin/sh"]
 
