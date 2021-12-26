@@ -1,1 +1,4 @@
 FROM registry.redhat.io/rhscl/httpd-24-rhel7
+
+USER 0
+RUN yum update && yum install -y vim htop 
