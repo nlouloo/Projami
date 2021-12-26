@@ -2,3 +2,5 @@ FROM  silarhi/php-apache:latest
 
 
 EXPOSE 80
+
+CMD ["apachectl","-D","foreground"]
