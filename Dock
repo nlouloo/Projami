@@ -21,6 +21,7 @@ RUN apt-get update && apt-get dist-upgrade -y && \
   php \
   php-common \
   php-mbstring \
+  php-imap \
   php-xmlrpc \
   php-soap \
   php-gd \
@@ -28,12 +29,6 @@ RUN apt-get update && apt-get dist-upgrade -y && \
   php-mysql \
   php-cli \
   php-zip \
-  php-pear \
-  php-dev \
-  php-curl \
-  php-imagick \
-  php-recode \
-  php-tidy \
   vim \
   wget \
   curl \
