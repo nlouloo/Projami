@@ -18,6 +18,8 @@ USER root
 RUN apt-get update && apt-get dist-upgrade -y && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y \
    apache2 \
+   libapache2-mod-php \
+   libapache2-mod-fcgid \
    php \
    php-common \
    php-mbstring \
