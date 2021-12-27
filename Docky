@@ -1,7 +1,7 @@
 FROM registry.access.redhat.com/ubi8/php-74:1-44
 
 USER 0
-RUN yum update -y && yum install htop  vim  unzip wget  -y
+RUN yum update -y && yum install vim  unzip wget  -y
 
 RUN chown -R 1000990000:1000990000 /var/www/html
 RUN chown -R 1000990000:1000990000 /home
