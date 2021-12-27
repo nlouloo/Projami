@@ -1,2 +1,2 @@
 #!/bin/sh
-exec apachectl -DFOREGROUND
+exec apachectl -D FOREGROUND
