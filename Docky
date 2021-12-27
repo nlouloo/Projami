@@ -1,11 +1,49 @@
-FROM registry.access.redhat.com/ubi8/php-74:1-44
+FROM openshift/base-rhel7:v3.11.570.20211203.165039
+ENV __doozer=update BUILD_RELEASE=1 BUILD_VERSION=v3.11.570 OS_GIT_MAJOR=3 OS_GIT_MINOR=11 OS_GIT_PATCH=570 OS_GIT_TREE_STATE=clean OS_GIT_VERSION=3.11.570-1 SOURCE_GIT_TREE_STATE=clean 
 
-USER 0
-RUN yum update -y && yum install vim  unzip wget  -y
+ENV USER_NAME=www-data \
+    USER_UID=1001 \
+    BASE_DIR=/home/www-data \
+    PHP=71 \
+    HOME=${BASE_DIR}
 
-RUN chown -R 1000990000:1000990000 /var/www/html
-RUN chown -R 1000990000:1000990000 /home
-RUN chown -R 1000990000:1000990000 /opt/app-root/src
 
+RUN yum -y install mediawiki httpd ImageMagick git rh-php${PHP}* mediawiki-container-scripts \
+  && yum clean all \
+  && mkdir -p ${BASE_DIR} ${BASE_DIR}/etc \
+  && useradd -u ${USER_UID} -r -g 0 -M -d ${BASE_DIR} -b ${BASE_DIR} -s /sbin/nologin -c "www-data user" ${USER_NAME} \
+  && mkdir -p ${BASE_DIR}/httpd/{logs,run,html,conf} \
+  && cp /opt/rh/httpd24/root/etc/httpd/conf/{httpd.conf,magic} ${BASE_DIR}/httpd/conf \
+  && cp -R /usr/share/mediawiki ${BASE_DIR}/httpd/mediawiki \
+  && mkdir ${BASE_DIR}/tmp \
+  && cp -R /opt/rh/httpd24/root/etc/httpd/conf.modules.d ${BASE_DIR}/httpd/conf.modules.d \
+  && cp -R /opt/rh/httpd24/root/etc/httpd/conf.d ${BASE_DIR}/httpd/conf.d \
+  && chown -R ${USER_NAME}:0 ${BASE_DIR}/httpd \
+  && mkdir -p ${BASE_DIR}/httpd/mediawiki/{cache,images} \
+  && chmod 777 ${BASE_DIR}/httpd/mediawiki/{cache,images} \
+  && chmod 777 /var/opt/rh/rh-php${PHP}/run/php-fpm \
+  && chmod 777 ${BASE_DIR}/tmp \
+  && chmod -R g+rw ${BASE_DIR} \
+  && ln -sf /home/www-data /opt/rh/httpd24/root/home/www-data \
+  && cp /usr/share/mediawiki-container-scripts/mediawiki.conf.example           ${BASE_DIR}/httpd/conf.d/mediawiki.conf \
+  && sed -i -e 's/Listen 80/Listen 8080/'               -e "s@ServerRoot \"/etc/httpd\"@ServerRoot ${BASE_DIR}/httpd@"               -e 's@DocumentRoot "/var/www/.*"@DocumentRoot mediawiki/@'               -e "s@/var/www@${BASE_DIR}/httpd@"               -e "s@logs/error_log@${BASE_DIR}/httpd/logs/error_log@"               -e "s@logs/access_log@${BASE_DIR}/httpd/logs/access_log@" ${BASE_DIR}/httpd/conf/httpd.conf \
+  && echo "PidFile /home/www-data/httpd/run/httpd.pid" >> ${BASE_DIR}/httpd/conf/httpd.conf \
+  && echo "DefaultRuntimeDir /home/www-data/httpd/run/" >> ${BASE_DIR}/httpd/conf/httpd.conf \
+  && rm -rf ${BASE_DIR}/httpd/modules \
+  && ln -sf /opt/rh/httpd24/root/usr/lib64/httpd/modules/ ${BASE_DIR}/httpd/modules \
+  && rm -rf /home/www-data/httpd/html \
+  && ln -sf /home/www-data/httpd/mediawiki /home/www-data/httpd/html \
+  && sed "s@${USER_NAME}:x:${USER_UID}:@${USER_NAME}:x:\${USER_ID}:@g" /etc/passwd > ${BASE_DIR}/etc/passwd.template
 
-USER 1000990000
+EXPOSE 8080
+USER ${USER_UID}
+ENTRYPOINT ["entrypoint.sh"]
+
+LABEL \
+        com.redhat.component="openshift-enterprise-mediawiki-container" \
+        version="v3.11.570" \
+        vendor="Red Hat" \
+        name="openshift3/mediawiki" \
+        License="GPLv2+" \
+        release="1" \
+        io.openshift.maintainer.product="OpenShift Container Platform"
