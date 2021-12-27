@@ -8,6 +8,10 @@ RUN yum update -y && \
                   php-gd  php-json libapache2-mod-php7 php-ldap php-mbstring php-pdo \
                   php-soap php-opcache php-xml php-imap php-zip php-fpm \
                   zip hostname" && \
+    yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
+    yum reinstall -y tzdata && \
+    rpm -V $INSTALL_PKGS && \
+    yum -y clean all --enablerepo='*'
 
 
 USER 1000990000
