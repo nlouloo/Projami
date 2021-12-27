@@ -1,5 +1,18 @@
 FROM  jefferyb/openshift-ubuntu-php
 
+RUN mkdir /projtemp && \
+    chown -R 1000990000:1000990000 /projtemp && \
+    chown -R 1000990000:1000990000 /var/www/html && \    
+    echo "max_input_vars = 4000" >> /etc/php/7.2/apache2/php.ini && \
+    echo "max_input_vars = 4000" >> /etc/php/7.2/cli/php.ini && \
+    echo "max_input_vars = 4000" >> /etc/php/7.2/fpm/php.ini 
+
 
 USER 1000990000
 
+WORKDIR /projtemp
+
+RUN wget https://jztkft.dl.sourceforge.net/project/projectorria/projeqtorV9.4.0.zip && \
+    unzip -q projeqtorV9.4.0.zip && rm projeqtorV9.4.0.zip && \
+    cp -r /projtemp/projeqtor /var/www/html && \
+    rm -r /projtemp
