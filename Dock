@@ -61,7 +61,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
   echo "Display errors in stderr"; \
   echo "display_errors=stderr" > $PHP_INI_DIR/conf.d/display-errors.ini; 
 
-RUN chmod -R u+x /usr/local/bin && \
+RUN chmod -R a+x /usr/local/bin && \
     chgrp -R 0 ${APP_ROOT} \
       /var/log/apache2 \
       /var/run/apache2 \
