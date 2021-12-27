@@ -19,7 +19,6 @@ RUN apt-get update && apt-get dist-upgrade -y && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y \
   apache2 \
   php \
-  libapache2-mod-php \
   php-common \
   php-mbstring \
   php-xmlrpc \
@@ -30,21 +29,14 @@ RUN apt-get update && apt-get dist-upgrade -y && \
   php-cli \
   php-zip \
   php-pear \
-  php-fpm \
   php-dev \
   php-curl \
   php-imagick \
   php-recode \
   php-tidy \
-  less \
   vim \
   wget \
   curl \
-  ipmitool \
-  bzip2 \
-  git \
-  patch \
-  tar \
   unzip && \
   apt-get clean
 
@@ -89,5 +81,7 @@ EXPOSE 8080
 
 ### user name recognition at runtime w/ an arbitrary uid - for OpenShift deployments
 ENTRYPOINT [ "uid_entrypoint" ]
+
+
 # VOLUME ${APP_ROOT}
 CMD [ "run" ]
