@@ -10,4 +10,5 @@ RUN yum update -y && \
                   zip hostname" && \
 
 
+USER 1000990000
 
