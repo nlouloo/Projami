@@ -18,24 +18,23 @@ USER root
 RUN apt-get update && apt-get dist-upgrade -y && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y \
   apache2 \
-  php \
-  php-common \
-  php-mbstring \
-  php-mysql \
-  php-json \
-  php-opcache
-  php-imap \
-  php-xmlrpc \
-  php-soap \
-  php-gd \
-  php-xml \
-  php-mysql \
-  php-fpm \
-  php-cli \
-  php-zip \
+#  php \
+#  php-common \
+#  php-mbstring \
+#  php-mysql \
+#  php-json \
+#  php-opcache
+#  php-imap \
+#  php-xmlrpc \
+#  php-soap \
+#  php-gd \
+#  php-xml \
+#  php-mysql \
+#  php-fpm \
+#  php-cli \
+#  php-zip \
   vim \
   wget \
-  curl \
   unzip && \
   apt-get clean
 
