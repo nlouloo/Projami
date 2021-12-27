@@ -53,7 +53,7 @@ ENV DOCUMENT_ROOT='' \
     PHP_INI_DIR=/etc/php/${PHP_VERSION}/apache2 \
     PATH=/usr/local/bin:${PATH} HOME=${APP_ROOT}
 
-COPY bin/ /usr/local/bin/
+COPY files/ /usr/local/bin/
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer; \
