@@ -4,7 +4,7 @@ USER 0
 
 RUN apt-get update && apt-get upgrade -y && apt-get autoremove && apt-get autoclean
 
-RUN a2enmod proxy_fcgi setenvif && a2enconf php7.2-fpm
+RUN a2enmod proxy_fcgi setenvif && a2enconf php7.2-fpm && service apache2 restart
 
 RUN mkdir /projtemp && \
     chown -R 1000990000:1000990000 /projtemp && \
