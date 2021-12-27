@@ -33,6 +33,7 @@ RUN apt-get update && apt-get dist-upgrade -y && \
    php-cli \
    php-zip \
    vim \
+   curl \
    wget \
    unzip && \
    apt-get clean
