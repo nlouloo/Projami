@@ -20,23 +20,22 @@ RUN apt-get update && apt-get dist-upgrade -y && \
    apache2 \
    php \
    php-common \
-#  php-mbstring \
-#  php-mysql \
-#  php-json \
-#  php-opcache
-#  php-imap \
-#  php-xmlrpc \
-#  php-soap \
-#  php-gd \
-#  php-xml \
-#  php-mysql \
+   php-mbstring \
+   php-mysql \
+   php-json \
+   php-opcache \
+   php-imap \
+   php-xmlrpc \
+   php-soap \
+   php-gd \
+   php-xml \
    php-fpm \
-#  php-cli \
-#  php-zip \
-  vim \
-  wget \
-  unzip && \
-  apt-get clean
+   php-cli \
+   php-zip \
+   vim \
+   wget \
+   unzip && \
+   apt-get clean
 
 ENV DOCUMENT_ROOT='' \
     APP_ROOT=/var/www/html \
@@ -90,7 +89,7 @@ RUN wget -q https://jztkft.dl.sourceforge.net/project/projectorria/projeqtorV9.4
     unzip -q projeqtorV9.4.0.zip && rm projeqtorV9.4.0.zip && \
     cp -r /projtemp/projeqtor /var/www/html && \
     rm -r /projtemp/* && \
-    echo "<?php  phpinfo();  ?> " >> \var\www\html\info.php
+    echo "<?php  phpinfo();  ?> " >> /var/www/html/info.php
 
 WORKDIR ${APP_ROOT}
 
