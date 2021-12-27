@@ -1,2 +1,4 @@
-FROM registry.redhat.io/rhscl/httpd-24-rhel7
+#FROM registry.redhat.io/rhscl/httpd-24-rhel7
+FROM  registry.redhat.io/rhel8/php-74
+
 
