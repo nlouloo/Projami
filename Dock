@@ -17,9 +17,9 @@ USER root
 
 RUN apt-get update && apt-get dist-upgrade -y && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y \
-  apache2 \
-#  php \
-#  php-common \
+   apache2 \
+   php \
+   php-common \
 #  php-mbstring \
 #  php-mysql \
 #  php-json \
@@ -30,7 +30,7 @@ RUN apt-get update && apt-get dist-upgrade -y && \
 #  php-gd \
 #  php-xml \
 #  php-mysql \
-#  php-fpm \
+   php-fpm \
 #  php-cli \
 #  php-zip \
   vim \
