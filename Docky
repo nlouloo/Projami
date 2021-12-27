@@ -7,6 +7,8 @@ RUN apt-get update && apt-get upgrade -y && \
     
 RUN sed -i 's/"80"/"8080"/' /etc/apache2/ports.conf
 
+RUN chown -R 1000990000:1000990000 /var/
+
 
 USER 1000990000
 
