@@ -1,13 +1,4 @@
-FROM  ubuntu/apache2:latest
-
-EXPOSE 8080
-
-RUN apt-get update && apt-get upgrade -y && \
-    INSTALL_PKG="htop vim"
-    
-RUN sed -i 's/"80"/"8080"/' /etc/apache2/ports.conf
-
-RUN chown -R 1000990000:1000990000 /var/
+FROM  jefferyb/openshift-ubuntu-php
 
 
 USER 1000990000
