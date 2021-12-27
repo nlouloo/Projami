@@ -15,7 +15,7 @@ RUN mkdir /projtemp && \
     echo "max_input_vars = 4000" >> /etc/php/7.2/fpm/php.ini && \
     echo "ServerName 127.0.0.1"  >> /etc/apache2/apache2.conf
     
-RUN service apache2 restart
+RUN a2enmod proxy_fcgi setenvif && a2enconf php7.2-fpm && service apache2 restart
 
 
 USER 1000990000
