@@ -1,5 +1,7 @@
 FROM  jefferyb/openshift-ubuntu-php
 
+USER 0
+
 RUN mkdir /projtemp && \
     chown -R 1000990000:1000990000 /projtemp && \
     chown -R 1000990000:1000990000 /var/www/html && \    
