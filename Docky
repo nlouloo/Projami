@@ -1,4 +1,13 @@
-#FROM registry.redhat.io/rhscl/httpd-24-rhel7
-FROM  registry.redhat.io/rhel8/php-74
+FROM registry.redhat.io/rhscl/httpd-24-rhel7
+#FROM  registry.redhat.io/rhel8/php-74
+
+USER 0
+
+RUN yum update -y && \
+    INSTALL_PKGS="apache2 php php-mysql php-common php-cli \
+                  php-gd  php-json libapache2-mod-php7 php-ldap php-mbstring php-pdo \
+                  php-soap php-opcache php-xml php-imap php-zip php-fpm \
+                  zip hostname" && \
+
 
 
