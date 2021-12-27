@@ -1,4 +1,11 @@
-FROM  registry.redhat.io/rhel8/php-74
+FROM  ubuntu/apache2:latest
+
+EXPOSE 8080
+
+RUN apt-get update && apt-get upgrade -y && \
+    INSTALL_PKG="htop vim"
+    
+RUN sed -i 's/"80"/"8080"/' /etc/apache2/ports.conf
 
 
 USER 1000990000
