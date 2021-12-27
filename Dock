@@ -73,11 +73,11 @@ RUN mkdir /projtemp && \
 RUN a2enmod proxy_fcgi setenvif && a2enconf php7.2-fpm && service apache2 restart
 
 RUN chmod -R a+x /usr/local/bin && \
-    chgrp -R 0 ${APP_ROOT} \
+    chgrp -R 0  \
       /var/log/apache2 \
       /var/run/apache2 \
       /etc/apache2/sites-available && \
-    chmod -R g=u ${APP_ROOT} \
+    chmod -R g=u  \
       /etc/passwd \
       /var/log/apache2 \
       /var/run/apache2 \
