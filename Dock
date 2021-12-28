@@ -74,7 +74,7 @@ RUN echo "*********AVANT RESTART*************************" && \
     ps -fe && \
     echo "**********************************"
 
-RUN a2enmod proxy_fcgi setenvif && a2enconf php7.2-fpm && service apache2 restart
+#RUN a2enmod proxy_fcgi setenvif && a2enconf php7.2-fpm && service apache2 restart
 
 RUN echo "***********APRES RESTART ******************" && \
     ps -fe && \
