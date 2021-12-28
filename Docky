@@ -10,14 +10,17 @@ RUN yum update -yqq && \
         php-fpm \
         php-curl \
         wget \
-        vim && \
+        vim \
+        unzip && \
      echo "ServerName 127.0.0.1"  >> /etc/httpd/conf/httpd.conf
      
 
-RUN  mkdir /run/php-fpm  && \  
-    chown -R 1000990000:1000990000 /etc  && \
-    chown -R 1000990000:1000990000 /run && \
-    chown -R 1000990000:1000990000 /var/www/html 
+RUN  mkdir /run/php-fpm  && \
+     mkdir /projtemp && \
+     chown -R 1000990000:1000990000 /projtemp  && \
+     chown -R 1000990000:1000990000 /etc  && \
+     chown -R 1000990000:1000990000 /run && \
+     chown -R 1000990000:1000990000 /var/www/html 
 
 
 #  /etc/php-fpm.d/www.conf   user = 1000990000  group = 1000990000 (apache>> 1000990000)
@@ -29,6 +32,12 @@ RUN  mkdir /run/php-fpm  && \
 
 USER 1000990000
 
+WORKDIR /projtemp
+
+RUN wget -q https://jztkft.dl.sourceforge.net/project/projectorria/projeqtorV9.4.0.zip && \
+    unzip -q projeqtorV9.4.0.zip && rm projeqtorV9.4.0.zip && \
+    cp -r /projtemp/projeqtor /var/www/html && \
+    rm -r /projtemp/* 
 
 RUN "echo <?php phpinfo(); ?>" >> /var/www/html/info.php
 
