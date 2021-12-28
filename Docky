@@ -19,3 +19,4 @@ RUN yum update -yqq && \
 USER 1000990000
 
 
+CMD ["/usr/bin/run-httpd"]
