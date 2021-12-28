@@ -14,10 +14,11 @@ RUN yum update -yqq && \
      echo "ServerName 127.0.0.1"  >> /etc/httpd/conf/httpd.conf
      
 
-RUN chown -R 1000990000:1000990000 /etc  && \
+RUN  mkdir /run/php-fpm  && \  
+    chown -R 1000990000:1000990000 /etc  && \
     chown -R 1000990000:1000990000 /run && \
-    chown -R 1000990000:1000990000 /var/www/html && \
-    mkdir /run/php-fpm
+    chown -R 1000990000:1000990000 /var/www/html 
+
 
 #  /etc/php-fpm.d/www.conf   user = 1000990000  group = 1000990000 (apache>> 1000990000)
 # php-fpm -D 
@@ -28,5 +29,6 @@ RUN chown -R 1000990000:1000990000 /etc  && \
 
 USER 1000990000
 
+RUN "echo <?php phpinfo(); ?>" >> /var/www/htmi/info.php
 
-CMD ["/usr/bin/run-httpd"]
+CMD ["/usr/sbin/php-fpm -D  ; /usr/bin/run-httpd; "]
