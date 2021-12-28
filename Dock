@@ -15,7 +15,7 @@ LABEL name="https://github.com/jefferyb/openshift-ubuntu-php" \
 
 USER root
 
-RUN apt-get update && apt-get dist-upgrade -y && \
+RUN apt-get update -yqq && apt-get dist-upgrade -yqq --no-install-recommends && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y \
    apache2 \
    libapache2-mod-fcgid \
