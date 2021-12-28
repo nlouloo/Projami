@@ -9,8 +9,7 @@ RUN yum update -yqq && \
        php \
        php-cli \
        php-common \
-       libapache2-mod-php \
-#       php-curl \
+       php-curl \
 #       php-fpm \
        php-gd \
        php-json \
