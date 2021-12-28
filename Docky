@@ -6,9 +6,9 @@ USER 0
 
 RUN yum update -yqq && \
     yum install -y \
-        php \
-        php-fpm \
-        php-curl \
+#        php \
+#        php-fpm \
+#        php-curl \
         wget \
         vim && \
      echo "ServerName 127.0.0.1"  >> /etc/httpd/conf/httpd.conf
