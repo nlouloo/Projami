@@ -12,7 +12,6 @@ RUN yum update -yqq && \
        php-curl \
        php-fpm \
        php-gd \
-       php-imap \
        php-json \
        php-mbstring \
        php-pdo \ 
