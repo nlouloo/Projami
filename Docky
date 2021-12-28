@@ -4,7 +4,7 @@ EXPOSE 8080
 
 USER 0
 
-RUN apt-get update -yqq && apt-get install -yqq php-fpm wget
+RUN yum update -yqq && yum install -y php-fpm wget
 
 
 USER 1000990000
