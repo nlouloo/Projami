@@ -31,7 +31,6 @@ RUN apt-get update -yqq && apt-get dist-upgrade -yqq --no-install-recommends && 
    php-soap \
    php-gd \
    php-xml \
-   php-fpm \
    php-cli \
    php-zip \
    vim \
