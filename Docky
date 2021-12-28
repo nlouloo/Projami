@@ -16,14 +16,17 @@ RUN yum update -yqq && \
 
 RUN chown -R 1000990000:1000990000 /etc  && \
     chown -R 1000990000:1000990000 /run && \
-    chown -R 1000990000:1000990000 /var
+    chown -R 1000990000:1000990000 /var/www/html && \
+    mkdir /run/php-fpm
 
+#  /etc/php-fpm.d/www.conf   user = 1000990000  group = 1000990000 (apache>> 1000990000)
+# php-fpm -D 
 
      
    
 
 
 USER 1000990000
-
+ENTRYPOINT ["php-fpm -D"]
 
 CMD ["/usr/bin/run-httpd"]
