@@ -9,14 +9,14 @@ RUN yum update -yqq && \
        php \
        php-cli \
        php-common \
-       php-curl \
+#       php-curl \
 #       php-fpm \
        php-gd \
        php-json \
        php-mbstring \
        php-pdo \
        php-mysqlnd \
-       php-opcache \
+#       php-opcache \
        php-soap \
        php-xml \
        php-xmlrpc \
