@@ -34,8 +34,10 @@ RUN  mkdir /run/php-fpm  && \
      chown -R 1000990000:1000990000 /projrun  && \
      chown -R 1000990000:1000990000 /etc  && \
      chown -R 1000990000:1000990000 /run && \
-     chown -R 1000990000:1000990000 /var/www/html 
-
+     chown -R 1000990000:1000990000 /var/www/html && \
+     mkdir /pvol_files && \
+     chown -R 1000990000:1000990000 /pvol_files && \
+     echo "max_input_vars = 4000" >> /etc/php.ini     
 
 #  /etc/php-fpm.d/www.conf   user = 1000990000  group = 1000990000 (apache>> 1000990000)
 
