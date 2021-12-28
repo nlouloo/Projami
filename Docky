@@ -14,7 +14,8 @@ RUN yum update -yqq && \
      echo "ServerName 127.0.0.1"  >> /etc/httpd/conf/httpd.conf
      
 
-RUN chown -R 1000990000:1000990000 /
+RUN chown -R 1000990000:1000990000 /etc/httpd && \
+    chown -R 1000990000:1000990000 /run/httpd
 
 
      
