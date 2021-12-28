@@ -1,3 +1,3 @@
 #!/bin/sh
-php-fpm -D
-run-httpd
+/usr/sbin/php-fpm -D 
+/usr/bin/run-httpd 
