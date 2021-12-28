@@ -17,7 +17,9 @@ RUN yum update -yqq && \
 
 RUN  mkdir /run/php-fpm  && \
      mkdir /projtemp && \
+     mkdir /projrun && \
      chown -R 1000990000:1000990000 /projtemp  && \
+     chown -R 1000990000:1000990000 /projrun  && \
      chown -R 1000990000:1000990000 /etc  && \
      chown -R 1000990000:1000990000 /run && \
      chown -R 1000990000:1000990000 /var/www/html 
@@ -25,11 +27,12 @@ RUN  mkdir /run/php-fpm  && \
 
 #  /etc/php-fpm.d/www.conf   user = 1000990000  group = 1000990000 (apache>> 1000990000)
 
+COPY files/run.sh /projrun/
+
+RUN chmod a+x /projrun/run.sh && \
+    chown -R 1000990000:1000990000 /projrun/run.sh
 
      
-   
-
-
 USER 1000990000
 
 WORKDIR /projtemp
@@ -39,6 +42,9 @@ RUN wget -q https://jztkft.dl.sourceforge.net/project/projectorria/projeqtorV9.4
     cp -r /projtemp/projeqtor /var/www/html && \
     rm -r /projtemp/* 
 
+
+
+
 RUN echo "<?php   phpinfo();   ?>" >> /var/www/html/info.php
 
-CMD ["/usr/sbin/php-fpm -D  ; /usr/bin/run-httpd "]
+CMD ["/projrun/run.sh"]
