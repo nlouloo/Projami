@@ -1,5 +1,0 @@
-FROM docker pull httpd:latest
-
-EXPOSE 8080
-
-USER 
