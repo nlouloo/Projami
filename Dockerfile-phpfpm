@@ -2,7 +2,7 @@ FROM php:fpm-buster
 
 USER 0
 
-RUN apt-get update && apt-get upgrade -y && apt-get install \
+RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     vim \
     procps \
     htop
