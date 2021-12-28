@@ -70,15 +70,9 @@ RUN mkdir /projtemp && \
     echo "max_input_vars = 4000" >> /etc/php/7.2/fpm/php.ini && \
     echo "ServerName 127.0.0.1"  >> /etc/apache2/apache2.conf
 
-RUN echo "*********AVANT RESTART*************************" && \
-    ps -fe && \
-    echo "**********************************"
 
 #RUN a2enmod proxy_fcgi setenvif && a2enconf php7.2-fpm && service apache2 restart
 
-RUN echo "***********APRES RESTART ******************" && \
-    ps -fe && \
-    echo "**********************************"
 
 RUN chmod -R a+x /usr/local/bin && \
     chgrp -R 0  \
@@ -93,9 +87,6 @@ RUN chmod -R a+x /usr/local/bin && \
 
 USER 1000990000
 
-RUN echo "***********USER 1000990000  ******************" && \
-    ps -fe && \
-    echo "**********************************"
 
 WORKDIR /projtemp
 
