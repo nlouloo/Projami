@@ -21,7 +21,7 @@ RUN  mkdir /run/php-fpm  && \
 
 
 #  /etc/php-fpm.d/www.conf   user = 1000990000  group = 1000990000 (apache>> 1000990000)
-# php-fpm -D 
+
 
      
    
@@ -29,6 +29,7 @@ RUN  mkdir /run/php-fpm  && \
 
 USER 1000990000
 
-RUN "echo <?php phpinfo(); ?>" >> /var/www/htmi/info.php
+
+RUN "echo <?php phpinfo(); ?>" >> /var/www/html/info.php
 
 CMD ["/usr/sbin/php-fpm -D  ; /usr/bin/run-httpd; "]
