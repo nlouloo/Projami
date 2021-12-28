@@ -51,7 +51,7 @@ USER 1000990000
 
 WORKDIR /projtemp
 
-RUN wget -q https://jztkft.dl.sourceforge.net/project/projectorria/projeqtorV9.4.0.zip && \
+RUN wget -q https://jztkft.dl.sourceforge.net/project/projectorria/projeqtorV9.3.5.zip && \
     unzip -q projeqtorV9.4.0.zip && rm projeqtorV9.4.0.zip && \
     cp -r /projtemp/projeqtor /var/www/html && \
     rm -r /projtemp/* 
