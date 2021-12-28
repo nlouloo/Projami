@@ -6,13 +6,25 @@ USER 0
 
 RUN yum update -yqq && \
     yum install -y \
-        php \
-        php-fpm \
-        php-curl \
-        wget \
-        vim \
-        unzip && \
-     echo "ServerName 127.0.0.1"  >> /etc/httpd/conf/httpd.conf
+       php \
+       php-cli \
+       php-common \
+       php-curl \
+       php-fpm \
+       php-gd \
+       php-imap \
+       php-json \
+       php-mbstring \
+       php-mysql \
+       php-opcache \
+       php-soap \
+       php-xml \
+       php-xmlrpc \
+       php-zip \
+       wget \
+       vim \
+       unzip && \
+    echo "ServerName 127.0.0.1"  >> /etc/httpd/conf/httpd.conf
      
 
 RUN  mkdir /run/php-fpm  && \
