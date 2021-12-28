@@ -49,14 +49,6 @@ RUN mkdir /projtemp && \
     echo "max_input_vars = 4000" >> /etc/php/7.2/fpm/php.ini && \
     echo "ServerName 127.0.0.1"  >> /etc/apache2/apache2.conf
 
-RUN apachectl stop ; \
-    apachectl a2dismod php7.2 ; \
-    a2dismod mpm_prefork ;  \
-    a2enmod mpm_event ; \
-    a2enconf php7.2-fpm ; \
-    a2enmod proxy ; \
-    a2enmod proxy_fcgi;
-    
 
 
 ENV DOCUMENT_ROOT='' \
