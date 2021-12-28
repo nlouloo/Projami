@@ -8,8 +8,11 @@ RUN apt-get update -yqq && apt-get install -yqq apache2 wget
 
 RUN cd /tmp && \
     wget http://mirrors.kernel.org/ubuntu/pool/multiverse/liba/libapache-mod-fastcgi/libapache2-mod-fastcgi_2.4.7~0910052141-1.2_amd64.deb && \
-    dpkg -i libapache2-mod-fastcgi_2.4.7~0910052141-1.2_amd64.deb; apt-get install -f && \    
-    sed -i 's/Listen 80/Listen 8080/' /etc/apache2/conf/httpd.conf
+    dpkg -i libapache2-mod-fastcgi_2.4.7~0910052141-1.2_amd64.deb; apt-get install -f ;  \    
+    sed -i 's/80/8080/g' /etc/apache2/ports.conf; \
+    sed -i 's/80/8080/g' /etc/apache2/sites-available/000-default.conf; \
+    a2enmod rewrite; \
+    echo "ServerName 127.0.0.1"  >> /etc/apache2/apache2.conf ;
 
 RUN a2enmod actions proxy_fcgi fastcgi
 
@@ -20,35 +23,19 @@ RUN mkdir /projtemp && \
     chown -R 1000990000:1000990000 /pvol_files && \
     echo "max_input_vars = 4000" >> /etc/php/7.2/apache2/php.ini && \
     echo "max_input_vars = 4000" >> /etc/php/7.2/cli/php.ini && \
-    echo "max_input_vars = 4000" >> /etc/php/7.2/fpm/php.ini && \
-    echo "ServerName 127.0.0.1"  >> /etc/apache2/apache2.conf
+    echo "max_input_vars = 4000" >> /etc/php/7.2/fpm/php.ini 
     
 
-COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+#COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
-COPY info.php /var/www/html/info.php
+#COPY info.php /var/www/html/info.php
 
-COPY run.sh /app/run.sh
+COPY files/run.sh /app/run.sh
 RUN chmod 755 /app/run.sh
 
 
 RUN chmod 755 /app/run.sh
-CMD "/app/run.sh"
-
-
-
-    
-RUN a2enmod proxy_fcgi setenvif && a2enconf php7.2-fpm && service apache2 restart
-
 
 USER 1000990000
-
-WORKDIR /projtemp
-
-RUN wget -q https://jztkft.dl.sourceforge.net/project/projectorria/projeqtorV9.4.0.zip && \
-    unzip -q projeqtorV9.4.0.zip && rm projeqtorV9.4.0.zip && \
-    cp -r /projtemp/projeqtor /var/www/html && \
-    rm -r /projtemp/* && \
-    echo "<?php  phpinfo();  ?> " >> \var\www\html\info.php
-
+CMD "/app/run.sh"
 
