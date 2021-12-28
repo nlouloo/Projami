@@ -1,3 +1,10 @@
 FROM php:fpm-buster
 
+USER 0
+
+RUN yum update && yum upgrade -y && yum install \
+    vim \
+    procps \
+    htop
+
 USER 1000990000
