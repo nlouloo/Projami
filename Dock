@@ -19,6 +19,7 @@ RUN apt-get update -yqq && apt-get dist-upgrade -yqq --no-install-recommends && 
   DEBIAN_FRONTEND=noninteractive apt-get install -yqq \
    apache2 \
    libapache2-mod-php \
+   libapache2-mod-fcgid \
    php \
    php-common \
    php-mbstring \
@@ -38,6 +39,16 @@ RUN apt-get update -yqq && apt-get dist-upgrade -yqq --no-install-recommends && 
    wget \
    unzip && \
    apt-get clean
+
+RUN apachectl stop ; \
+    apachectl a2dismod php7.2 ; \
+    a2dismod mpm_prefork ;  \
+    a2enmod mpm_event ; \
+    a2enconf php7.2-fpm ; \
+    a2enmod proxy ; \
+    a2enmod proxy_fcgi;
+    
+
 
 ENV DOCUMENT_ROOT='' \
     APP_ROOT=/var/www/html \
