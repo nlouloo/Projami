@@ -4,7 +4,13 @@ EXPOSE 8080
 
 USER 0
 
-RUN yum update -yqq && yum install -y php-fpm wget
+RUN yum update -yqq && \
+    yum install -y \
+        php \
+        php-fpm \
+        wget \
+        vim \
+        htop
 
 
 USER 1000990000
