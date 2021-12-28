@@ -27,6 +27,6 @@ RUN chown -R 1000990000:1000990000 /etc  && \
 
 
 USER 1000990000
-ENTRYPOINT ["php-fpm -D"]
+
 
 CMD ["/usr/bin/run-httpd"]
