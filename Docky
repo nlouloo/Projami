@@ -6,16 +6,17 @@ USER 0
 
 RUN yum update -yqq && \
     yum install -y \
-#        php \
-#        php-fpm \
-#        php-curl \
+        php \
+        php-fpm \
+        php-curl \
         wget \
         vim && \
      echo "ServerName 127.0.0.1"  >> /etc/httpd/conf/httpd.conf
      
 
-RUN chown -R 1000990000:1000990000 /etc/httpd && \
-    chown -R 1000990000:1000990000 /run/httpd
+RUN chown -R 1000990000:1000990000 /etc  && \
+    chown -R 1000990000:1000990000 /run && \
+    chown -R 1000990000:1000990000 /var
 
 
      
