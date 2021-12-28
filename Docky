@@ -10,7 +10,7 @@ RUN yum update -yqq && \
        php-cli \
        php-common \
        php-curl \
-       php-fpm \
+#       php-fpm \
        php-gd \
        php-json \
        php-mbstring \
@@ -39,7 +39,6 @@ RUN  mkdir /run/php-fpm  && \
      chown -R 1000990000:1000990000 /pvol_files && \
      echo "max_input_vars = 4000" >> /etc/php.ini     
 
-#  /etc/php-fpm.d/www.conf   user = 1000990000  group = 1000990000 (apache>> 1000990000)
 
 COPY files/run.sh /projrun/
 
