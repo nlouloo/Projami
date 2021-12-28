@@ -39,6 +39,6 @@ RUN wget -q https://jztkft.dl.sourceforge.net/project/projectorria/projeqtorV9.4
     cp -r /projtemp/projeqtor /var/www/html && \
     rm -r /projtemp/* 
 
-RUN "echo <?php phpinfo(); ?>" >> /var/www/html/info.php
+RUN echo "<?php   phpinfo();   ?>" >> /var/www/html/info.php
 
-CMD ["/usr/sbin/php-fpm -D  ; /usr/bin/run-httpd; "]
+CMD ["/usr/sbin/php-fpm -D  ; /usr/bin/run-httpd "]
