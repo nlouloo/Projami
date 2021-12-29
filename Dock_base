@@ -3,6 +3,12 @@ FROM centos:centos8.4.2105
 
 USER 0
 
+RUN yum update -yqq         && \
+    yum upgrade -yqq        && \
+    yum install -y \
+        wget 
+
+
 RUN  mkdir /projrun && \
      chown -R 1000990000:1000990000 /projrun      
 
