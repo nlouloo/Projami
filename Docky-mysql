@@ -8,7 +8,7 @@ USER 0
 
 RUN yum update -yqq && \
     yum install -y \
-       php-fpm \
+#       php-fpm \
        wget \
        vim \
        unzip && \
