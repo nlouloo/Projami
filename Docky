@@ -6,21 +6,21 @@ USER 0
 
 RUN yum update -yqq && \
     yum install -y \
-       php \
-       php-cli \
-       php-common \
-       php-curl \
+ #      php \
+ #      php-cli \
+ #      php-common \
+ #      php-curl \
 #       php-fpm \
-       php-gd \
-       php-json \
-       php-mbstring \
-       php-pdo \
-       php-mysqlnd \
+#       php-gd \
+#       php-json \
+#       php-mbstring \
+#       php-pdo \
+#       php-mysqlnd \
 #       php-opcache \
-       php-soap \
-       php-xml \
-       php-xmlrpc \
-       php-zip \
+#       php-soap \
+ #      php-xml \
+  #     php-xmlrpc \
+   #    php-zip \
        wget \
        vim \
        unzip && \
@@ -51,7 +51,7 @@ USER 1000990000
 WORKDIR /projtemp
 
 RUN wget -q https://jztkft.dl.sourceforge.net/project/projectorria/projeqtorV9.3.5.zip && \
-    unzip -q projeqtorV9.3.5.zip && rm projeqtorV9.3.5.zip && \
+    unzip -q *.zip && rm *.zip && \
     cp -r /projtemp/projeqtor /var/www/html && \
     rm -r /projtemp/* 
 
