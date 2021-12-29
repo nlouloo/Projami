@@ -5,6 +5,11 @@ USER 0
 
 RUN yum install -y  mod_fcgid
 
+RUN  chown -R 1000990000:1000990000 /etc  && \
+     chown -R 1000990000:1000990000 /run && \
+     chown -R 1000990000:1000990000 /var && 
+     chown -R 1000990000:1000990000 /usr
+
      
 USER 1000990000
 
