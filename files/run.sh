@@ -1,3 +1,4 @@
 #!/bin/sh
 #/usr/sbin/php-fpm -D 
-/usr/sbin/httpd -D foreground 
+tail -f /etc/httpd/conf/httpd.conf
+#/usr/sbin/httpd -D foreground 
