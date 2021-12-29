@@ -13,8 +13,8 @@ RUN yum update -yqq && \
        vim \
        unzip && \
     echo "ServerName 127.0.0.1"  >> /etc/httpd/conf/httpd.conf && \
-    echo "ServerName 127.0.0.1"  >> /etc/httpd/conf/httpd-ssl.conf && \
-    echo "DocumentRoot /var/www/html"  >> /etc/httpd/conf/httpd.conf
+    echo "ServerName 127.0.0.1"  >> /etc/httpd/conf/httpd-ssl.conf
+#    echo "DocumentRoot /var/www/html"  >> /etc/httpd/conf/httpd.conf
      
 
 RUN  mkdir /run/php-fpm && \
