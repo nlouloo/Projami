@@ -8,7 +8,8 @@ FROM image-registry.openshift-image-registry.svc:5000/scef-projeqtor/base-centos
 
 USER 0
 
-RUN   yum install -y  mod_fcgid           && \       
+RUN   yum install -y  mod_fcgid  \
+                      php-fpm             && \       
      chown -R 1000990000:1000990000 /etc  && \
      chown -R 1000990000:1000990000 /run  && \
      chown -R 1000990000:1000990000 /var  && \
