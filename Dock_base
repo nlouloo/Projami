@@ -6,7 +6,7 @@ USER 0
 RUN  mkdir /projrun && \
      chown -R 1000990000:1000990000 /projrun      
 
-COPY files/run_base.sh /projrun/
+COPY files/run_tail.sh /projrun/
 
 RUN chmod a+x /projrun/* && \
     chown -R 1000990000:1000990000 /projrun
