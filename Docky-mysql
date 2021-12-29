@@ -16,13 +16,14 @@ RUN yum update -yqq && \
     echo "DocumentRoot /var/www/html"  >> /etc/httpd/conf/httpd.conf
      
 
-RUN  mkdir /projtemp && \
+RUN  mkdir /var/php-fpm && \
+     mkdir /projtemp && \
      mkdir /projrun && \
      chown -R 1000990000:1000990000 /projtemp  && \
      chown -R 1000990000:1000990000 /projrun  && \
      chown -R 1000990000:1000990000 /etc  && \
      chown -R 1000990000:1000990000 /run && \
-     chown -R 1000990000:1000990000 /var/www/html && \
+     chown -R 1000990000:1000990000 /var && \
      mkdir /pvol_files && \
      chown -R 1000990000:1000990000 /pvol_files && \
      echo "max_input_vars = 4000" >> /etc/php.ini     
@@ -48,4 +49,4 @@ RUN wget -q https://jztkft.dl.sourceforge.net/project/projectorria/projeqtorV9.3
 
 RUN echo "<?php   phpinfo();   ?>" >> /var/www/html/info.php
 
-CMD httpd -D FOREGROUND
+CMD /projrun/run.sh
