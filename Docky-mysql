@@ -16,7 +16,7 @@ RUN yum update -yqq && \
     echo "DocumentRoot /var/www/html"  >> /etc/httpd/conf/httpd.conf
      
 
-RUN  mkdir /var/php-fpm && \
+RUN  mkdir /run/php-fpm && \
      mkdir /projtemp && \
      mkdir /projrun && \
      chown -R 1000990000:1000990000 /projtemp  && \
