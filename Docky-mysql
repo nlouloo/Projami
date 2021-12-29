@@ -46,4 +46,4 @@ RUN wget -q https://jztkft.dl.sourceforge.net/project/projectorria/projeqtorV9.3
 
 RUN echo "<?php   phpinfo();   ?>" >> /var/www/html/info.php
 
-CMD ["/projrun/run.sh"]
+CMD httpd -D FOREGROUND
