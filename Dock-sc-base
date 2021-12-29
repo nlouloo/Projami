@@ -8,14 +8,21 @@ FROM image-registry.openshift-image-registry.svc:5000/scef-projeqtor/base-centos
 
 USER 0
 
-RUN   yum install -y  mod_fcgid  \
-                      vim        \
-                      php        \
-                      php-cli    \
-                      php-common \
-                      php-gd     \
-                      php-mbstring \
-                      php-fpm             && \
+RUN   yum install -y  mod_fcgid     \
+                      vim           \
+                      php           \
+                      php-cli       \
+                      php-common    \
+                      php-gd        \
+                      php-mbstring  \
+                      php-fpm       \
+                      php-pdo       \
+                      php-mysqlnd   \
+                      php-json      \
+                      php-opcache   \
+                      php-soap      \
+                      php-xml       \
+                      php-zip             && \
      mkdir /run/php-fpm                   && \
      chown -R 1000990000:1000990000 /run  && \
      chown -R 1000990000:1000990000 /etc  && \
