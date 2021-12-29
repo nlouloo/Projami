@@ -1,2 +1,18 @@
 FROM image-registry.openshift-image-registry.svc:5000/scef-projeqtor/base-centos8
 
+
+USER 0
+
+RUN  mkdir /projrun && \
+     chown -R 1000990000:1000990000 /projrun      
+
+COPY files/run_tail.sh /projrun/
+
+RUN chmod a+x /projrun/* && \
+    chown -R 1000990000:1000990000 /projrun
+
+     
+USER 1000990000
+
+
+CMD /projrun/run_tail.sh
