@@ -15,7 +15,8 @@ RUN   yum install -y  mod_fcgid  \
                       php-common \
                       php-gd     \
                       php-mbstring \
-                      php-fpm             && \       
+                      php-fpm             && \
+     mkdir /run/php-fpm                   && \                 
      chown -R 1000990000:1000990000 /etc  && \
      chown -R 1000990000:1000990000 /run  && \
      chown -R 1000990000:1000990000 /var  && \
