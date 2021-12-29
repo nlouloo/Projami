@@ -1,13 +1,15 @@
 FROM image-registry.openshift-image-registry.svc:5000/scef-projeqtor/base-centos8
 # scef-projeqtor/base-centos8  package content :  
+#      centos:centos8.4.2105
+#      wget unzip
 #
+#     /projrun/run_tail.sh  (endless shell loop)
 #
-#
-
 
 USER 0
 
-RUN yum install -y  mod_fcgid && \  
+RUN yum install -y               \
+           mod_fcgid          && \  
     yum clean -yqq            && \
     rm -r /var/cache/yum/*
     
