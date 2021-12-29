@@ -18,5 +18,6 @@ RUN   yum install -y  mod_fcgid  \
      
 USER 1000990000
 
+RUN echo "<?php   phpinfo();   ?>" >> /var/www/html/info.php
 
 CMD /projrun/run_tail.sh
