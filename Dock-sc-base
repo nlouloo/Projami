@@ -8,13 +8,10 @@ FROM image-registry.openshift-image-registry.svc:5000/scef-projeqtor/base-centos
 
 USER 0
 
-RUN yum install -y               \
-           mod_fcgid          
-    
-    
-RUN  chown -R 1000990000:1000990000 /etc  && \
-     chown -R 1000990000:1000990000 /run && \
-     chown -R 1000990000:1000990000 /var && 
+RUN   yum install -y  mod_fcgid           && \       
+     chown -R 1000990000:1000990000 /etc  && \
+     chown -R 1000990000:1000990000 /run  && \
+     chown -R 1000990000:1000990000 /var  && \
      chown -R 1000990000:1000990000 /usr
 
      
