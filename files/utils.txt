@@ -1,0 +1,2 @@
+# Change listening port of httpd.conf file
+ sed  -i 's/^ *//; s/ *$//; s/Listen 80$/Listen 8080/i ;' httpd.conf
