@@ -9,9 +9,7 @@ FROM image-registry.openshift-image-registry.svc:5000/scef-projeqtor/base-centos
 USER 0
 
 RUN yum install -y               \
-           mod_fcgid          && \  
-    yum clean -yqq            && \
-    rm -r /var/cache/yum/*
+           mod_fcgid          
     
     
 RUN  chown -R 1000990000:1000990000 /etc  && \
