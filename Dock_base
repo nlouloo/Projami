@@ -15,4 +15,4 @@ RUN chmod a+x /projrun/* && \
 USER 1000990000
 
 
-CMD /projrun/run_base.sh
+CMD /projrun/run_tail.sh
