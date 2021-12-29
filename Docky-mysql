@@ -4,3 +4,5 @@ FROM registry.access.redhat.com/ubi8/php-74:1-44
      
 USER 1000990000
 
+CMD httpd -D FOREGROUND
+
