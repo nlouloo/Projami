@@ -1,4 +1,8 @@
 FROM image-registry.openshift-image-registry.svc:5000/scef-projeqtor/base-centos8
+# scef-projeqtor/base-centos8  package content :  
+#
+#
+#
 
 
 USER 0
