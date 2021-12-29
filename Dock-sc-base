@@ -3,6 +3,7 @@ FROM image-registry.openshift-image-registry.svc:5000/scef-projeqtor/base-centos
 
 USER 0
 
+RUN yum install mod_fastcgi
 
      
 USER 1000990000
