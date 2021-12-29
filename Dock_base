@@ -3,13 +3,15 @@ FROM centos:centos8.4.2105
 
 USER 0
 
-RUN yum update -yqq         && \
+RUN yum update  -yqq        && \
     yum upgrade -yqq        && \
     yum install -y \
         wget       \
-        unzip      
-
-
+        unzip      \
+        vim                 && \
+    yum -y clean all        && \
+    rm -r /var/cache/yum/*
+    
 RUN  mkdir /projrun && \
      chown -R 1000990000:1000990000 /projrun      
 
