@@ -25,7 +25,6 @@ RUN yum update  -yqq            &&     \
                       php-xml          \
                       php-zip   &&     \
     yum -y clean all            &&     \
-    rm  -r /var/cache/yum/*     &&     \
     mkdir /projrun              &&     \
     chown -R 1000990000:1000990000 /projrun && \   
     mkdir /run/php-fpm                      && \
