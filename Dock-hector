@@ -18,7 +18,7 @@ RUN yum update  -yqq            &&     \
                       php-fpm          \
                       php-pdo          \
                       php-mysqlnd      \
-		      php-pdo_pg       \
+		      php-pdo_pgsql    \
                       php-json         \
                       php-opcache      \
                       php-soap         \
