@@ -26,29 +26,29 @@ RUN yum update  -yqq            &&     \
                       php-zip   &&     \
     yum -y clean all            &&     \
     mkdir /projrun              &&     \
-    chown -R 1000990000:1000990000 /projrun && \   
+    chown -R 1001150000:1001150000 /projrun && \   
     mkdir /run/php-fpm                      && \
-    chown -R 1000990000:1000990000 /run     && \
-    chown -R 1000990000:1000990000 /etc     && \
-    chown -R 1000990000:1000990000 /run     && \
-    chown -R 1000990000:1000990000 /var     && \
-    chown -R 1000990000:1000990000 /usr     && \
+    chown -R 1001150000:1001150000 /run     && \
+    chown -R 1001150000:1001150000 /etc     && \
+    chown -R 1001150000:1001150000 /run     && \
+    chown -R 1001150000:1001150000 /var     && \
+    chown -R 1001150000:1001150000 /usr     && \
     sed  -i 's/^ *//; s/ *$//; s/Listen 80$/Listen 8080/i ;' /etc/httpd/conf/httpd.conf  && \
     echo "ServerName 127.0.0.1"  >>  /etc/httpd/conf/httpd.conf                          && \
     echo "max_input_vars = 4000" >>  /etc/php.ini                                        && \
     mkdir /projtemp                                                                      && \
     mkdir /pvol_files                                                                    && \
-    chown -R 1000990000:1000990000 /projtemp                                             && \
-    chown -R 1000990000:1000990000 /pvol_files 
+    chown -R 1001150000:1001150000 /projtemp                                             && \
+    chown -R 1001150000:1001150000 /pvol_files 
 	 
 
 COPY files/run_tail.sh /projrun/
 
 RUN chmod a+x /projrun/*                      && \
-    chown -R 1000990000:1000990000 /projrun
+    chown -R 1001150000:1001150000 /projrun
 
      
-USER 1000990000
+USER 1001150000
 
 WORKDIR /projtemp
 
