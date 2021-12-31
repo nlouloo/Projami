@@ -8,9 +8,7 @@ RUN yum update  -yqq        && \
     yum install -y \
         wget       \
         unzip      \
-        vim         \
-        postgresql   \
-        postgresql-contrib && \
+        vim         && \
     yum -y clean all       
     
 RUN  mkdir /projrun && \
@@ -20,7 +18,9 @@ COPY files/run_tail.sh /projrun/
 
 RUN chmod a+x /projrun/* && \
     chown -R 1000990000:1000990000 /projrun
-
+    
+RUN dnf -y install postgresql-server && \
+    postgresql-setup --initdb
      
 USER 1000990000
 
