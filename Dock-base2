@@ -19,9 +19,8 @@ COPY files/run_tail.sh /projrun/
 RUN chmod a+x /projrun/* && \
     chown -R 1000990000:1000990000 /projrun
     
-RUN dnf -y install postgresql-server && \
-    postgresql-setup --initdb
-     
+RUN dnf -y install postgresql-server 
+
 USER 1000990000
 
 
