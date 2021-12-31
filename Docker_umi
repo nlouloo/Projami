@@ -1,2 +1,21 @@
 FROM  ubuntu/mysql:latest
 
+USER 0
+
+
+RUN  mkdir /projrun && \
+     chown -R 1000990000:1000990000 /projrun    
+     
+RUN  mkdir /projdb && \
+     chown -R 1000990000:1000990000 /projdb && \
+     chmod a+w /projdb
+
+COPY files/run_tail.sh /projrun/
+
+RUN chmod a+x /projrun/* && \
+    chown -R 1000990000:1000990000 /projrun
+    
+USER 1000990000
+
+
+CMD /projrun/run_tail.sh
