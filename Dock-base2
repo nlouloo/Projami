@@ -12,7 +12,10 @@ RUN yum update  -yqq        && \
     yum -y clean all       
     
 RUN  mkdir /projrun && \
-     chown -R 1000990000:1000990000 /projrun      
+     chown -R 1000990000:1000990000 /projrun    
+     
+RUN  mkdir /projdb && \
+     chown -R 1000990000:1000990000 /projdb  
 
 COPY files/run_tail.sh /projrun/
 
