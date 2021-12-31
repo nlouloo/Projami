@@ -15,7 +15,8 @@ RUN  mkdir /projrun && \
      chown -R 1000990000:1000990000 /projrun    
      
 RUN  mkdir /projdb && \
-     chown -R 1000990000:1000990000 /projdb  
+     chown -R 1000990000:1000990000 /projdb && \
+     chmod a+w /projdb
 
 COPY files/run_tail.sh /projrun/
 
