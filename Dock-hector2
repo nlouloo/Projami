@@ -1,0 +1,63 @@
+FROM centos:centos8.4.2105
+
+
+USER 0
+
+RUN yum update  -yqq            &&     \
+    yum upgrade -yqq            &&     \
+    yum install -y                     \
+                      wget             \
+                      unzip            \
+                      vim              \
+                      mod_fcgid        \
+                      php              \
+                      php-cli          \
+                      php-common       \
+                      php-gd           \
+                      php-mbstring     \
+                      php-fpm          \
+                      php-pdo          \
+                      php-mysqlnd      \
+		      php-pdo_pgsql    \
+                      php-json         \
+                      php-opcache      \
+                      php-soap         \
+                      php-xml          \
+                      php-zip   &&     \
+    yum -y clean all            &&     \
+    mkdir /projrun              &&     \
+    chown -R 1001060000:1001060000 /projrun && \   
+    mkdir /run/php-fpm                      && \
+    chown -R 1001060000:1001060000 /run     && \
+    chown -R 1001060000:1001060000 /etc     && \
+    chown -R 1001060000:1001060000 /run     && \
+    chown -R 1001060000:1001060000 /var     && \
+    chown -R 1001060000:1001060000 /usr     && \
+    sed  -i 's/^ *//; s/ *$//; s/Listen 80$/Listen 8080/i ;' /etc/httpd/conf/httpd.conf  && \
+    echo "ServerName 127.0.0.1"  >>  /etc/httpd/conf/httpd.conf                          && \
+    echo "max_input_vars = 4000" >>  /etc/php.ini                                        && \
+    mkdir /projtemp                                                                      && \
+    mkdir /pvol_files                                                                    && \
+    chown -R 1001060000:1001060000 /projtemp                                             && \
+    chown -R 1001060000:1001060000 /pvol_files 
+	 
+
+COPY files/run_tail.sh /projrun/
+
+RUN chmod a+x /projrun/*                      && \
+    chown -R 1001060000:1001060000 /projrun
+
+     
+USER 1001060000
+
+WORKDIR /projtemp
+
+RUN wget -q https://jztkft.dl.sourceforge.net/project/projectorria/projeqtorV9.3.5.zip && \
+    unzip -q *.zip && rm *.zip && \
+    cp -r /projtemp/projeqtor /var/www/html && \
+    rm -r /projtemp/* 
+
+RUN echo "<?php   phpinfo();   ?>" >> /var/www/html/info.php
+
+
+CMD /projrun/run_tail.sh
