@@ -11,8 +11,7 @@ RUN yum update  -yqq        && \
         vim         \
         postgresql   \
         postgresql-contrib && \
-    yum -y clean all        && \
-    rm -r /var/cache/yum/*
+    yum -y clean all       
     
 RUN  mkdir /projrun && \
      chown -R 1000990000:1000990000 /projrun      
