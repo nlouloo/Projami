@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update  -yqq           &&  \
     apt-get upgrade -yqq           &&  \
     apt-get install -y                 \
-                      httpd            \
+                      apache2          \
                       wget             \
                       unzip            \
                       vim              \
