@@ -8,7 +8,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update  -yqq           &&  \
     apt-get upgrade -yqq           &&  \
     apt-get install -y                 \
-                      apache2          \
+                 apache2               \
+                 libapache2-mod-php7.0 \
+                 mariadb-common        \
+	         mariadb-server        \
+	         mariadb-client        \
                       wget             \
                       unzip            \
                       vim              \
@@ -16,40 +20,41 @@ RUN apt-get update  -yqq           &&  \
                       php              \
                       php-cli          \
                       php-common       \
+		      php_curl         \
                       php-gd           \
-                      php-mbstring     \
                       php-fpm          \
+		      php-imap         \
+                      php-mbstring     \
                       php-pdo          \
+		      php-mysql        \
                       php-mysqlnd      \
                       php-json         \
                       php-opcache      \
                       php-soap         \
                       php-xml          \
-		      postgresql       \
-		      postgresql-contrib \
-                      php-zip      &&  \
-    apt-get -y clean all           &&  \
-    mkdir /projrun                 &&  \
-    chown -R 1001060000:1001060000 /projrun && \   
-    chown -R 1001060000:1001060000 /run     && \
-    chown -R 1001060000:1001060000 /etc     && \
-    chown -R 1001060000:1001060000 /run     && \
-    chown -R 1001060000:1001060000 /var     && \
-    chown -R 1001060000:1001060000 /usr     && \
-    mkdir /projtemp                                    && \
-    mkdir /pvol_files                                  && \
-    chown -R 1001060000:1001060000 /projtemp           && \
+                      php-zip                     && \
+    a2enmod rewrite                               && \
+    apt-get -y clean all                          && \
+    mkdir /projrun                                && \
+    mkdir /projtemp                               && \
+    mkdir /pvol_files                             && \
+    chown -R 1001060000:1001060000 /projrun       && \   
+    chown -R 1001060000:1001060000 /run           && \
+    chown -R 1001060000:1001060000 /etc           && \
+    chown -R 1001060000:1001060000 /run           && \
+    chown -R 1001060000:1001060000 /var           && \
+    chown -R 1001060000:1001060000 /usr           && \
+    chown -R 1001060000:1001060000 /projtemp      && \
     chown -R 1001060000:1001060000 /pvol_files 
 	 
 
 
 
-COPY files/run_tail.sh /projrun/
+COPY files/* /projrun/
 
 RUN chmod a+x /projrun/* && \
     chown -R 1000990000:1000990000 /projrun
     
 USER 1000990000
 
-
-CMD /projrun/run_tail.sh
+CMD /projrun/run_lamp.sh
