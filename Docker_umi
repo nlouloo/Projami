@@ -11,9 +11,6 @@ RUN apt-get update  -yqq           &&  \
     apt-get install -y                 \
                  apache2               \
                  libapache2-mod-php7.0 \
-                 mariadb-common        \
-	         mariadb-server        \
-	         mariadb-client        \
                       wget             \
                       unzip            \
                       vim              \
@@ -27,7 +24,6 @@ RUN apt-get update  -yqq           &&  \
 		      php-imap         \
                       php-mbstring     \
                       php-pdo          \
-		      php-mysql        \
                       php-mysqlnd      \
                       php-json         \
                       php-opcache      \
@@ -40,13 +36,13 @@ RUN apt-get update  -yqq           &&  \
     mkdir /projtemp                               && \
     mkdir /pvol_files                             && \
     chown -R ${OPS_USER}:${OPS_USER} /projrun     && \   
+    chown -R ${OPS_USER}:${OPS_USER} /projtemp      && \
+    chown -R ${OPS_USER}:${OPS_USER} /pvol_files    && \
     chown -R ${OPS_USER}:${OPS_USER} /run           && \
     chown -R ${OPS_USER}:${OPS_USER} /etc           && \
     chown -R ${OPS_USER}:${OPS_USER} /run           && \
     chown -R ${OPS_USER}:${OPS_USER} /var           && \
     chown -R ${OPS_USER}:${OPS_USER} /usr           && \
-    chown -R ${OPS_USER}:${OPS_USER} /projtemp      && \
-    chown -R ${OPS_USER}:${OPS_USER} /pvol_files    && \
     sed  -i 's/^ *//; s/ *$//; s/Listen 80$/Listen 8080/i ;' /etc/apache2/ports.conf  && \
     echo "ServerName 127.0.0.1"  >>  /etc/apache2/apache2.conf                        && \
     echo "max_input_vars = 4000" >>  /etc/php.ini                                      
