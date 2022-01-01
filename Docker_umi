@@ -4,6 +4,7 @@ USER 0
 
 ENV TZ=UTC
 ENV DEBIAN_FRONTEND=noninteractive
+ENV OPS_USER=1001060000
 
 RUN apt-get update  -yqq           &&  \
     apt-get upgrade -yqq           &&  \
@@ -38,24 +39,26 @@ RUN apt-get update  -yqq           &&  \
     mkdir /projrun                                && \
     mkdir /projtemp                               && \
     mkdir /pvol_files                             && \
-    chown -R 1001060000:1001060000 /projrun       && \   
-    chown -R 1001060000:1001060000 /run           && \
-    chown -R 1001060000:1001060000 /etc           && \
-    chown -R 1001060000:1001060000 /run           && \
-    chown -R 1001060000:1001060000 /var           && \
-    chown -R 1001060000:1001060000 /usr           && \
-    chown -R 1001060000:1001060000 /projtemp      && \
-    chown -R 1001060000:1001060000 /pvol_files 
-	 
+    chown -R ${OPS_USER}:${OPS_USER} /projrun     && \   
+    chown -R ${OPS_USER}:${OPS_USER} /run           && \
+    chown -R ${OPS_USER}:${OPS_USER} /etc           && \
+    chown -R ${OPS_USER}:${OPS_USER} /run           && \
+    chown -R ${OPS_USER}:${OPS_USER} /var           && \
+    chown -R ${OPS_USER}:${OPS_USER} /usr           && \
+    chown -R ${OPS_USER}:${OPS_USER} /projtemp      && \
+    chown -R ${OPS_USER}:${OPS_USER} /pvol_files    && \
+    sed  -i 's/^ *//; s/ *$//; s/Listen 80$/Listen 8080/i ;' /etc/apache2/ports.conf  && \
+    echo "ServerName 127.0.0.1"  >>  /etc/apache2/apache2.conf                        && \
+    echo "max_input_vars = 4000" >>  /etc/php.ini                                      
 
 
 
 COPY files/* /projrun/
 
 RUN chmod a+x /projrun/* && \
-    chown -R 1000990000:1000990000 /projrun
+    chown -R ${OPS_USER}:${OPS_USER} /projrun
     
-USER 1000990000
+USER ${OPS_USER}
 
 WORKDIR /projtemp
 
