@@ -57,4 +57,14 @@ RUN chmod a+x /projrun/* && \
     
 USER 1000990000
 
+WORKDIR /projtemp
+
+RUN wget -q https://jztkft.dl.sourceforge.net/project/projectorria/projeqtorV9.3.5.zip && \
+    unzip -q *.zip && rm *.zip && \
+    cp -r /projtemp/projeqtor /var/www/html && \
+    rm -r /projtemp/* 
+
+RUN echo "<?php   phpinfo();   ?>" >> /var/www/html/info.php
+
+
 CMD /projrun/run_lamp.sh
