@@ -1,4 +1,4 @@
-FROM  ubuntu/mysql:latest
+FROM  ubuntu:latest
 
 USER 0
 
@@ -27,6 +27,9 @@ RUN apt-get update  -yqq           &&  \
                       php-opcache      \
                       php-soap         \
                       php-xml          \
+		      mariadb-common \
+	              mariadb-server \
+	              mariadb-client \
                       php-zip                     && \
     a2enmod rewrite                               && \
     apt-get -y clean all                          && \
