@@ -10,7 +10,6 @@ RUN apt-get update  -yqq           &&  \
     apt-get upgrade -yqq           &&  \
     apt-get install -y                 \
                  apache2               \
-                 libapache2-mod-php7.0 \
                       wget             \
                       unzip            \
                       vim              \
@@ -18,7 +17,6 @@ RUN apt-get update  -yqq           &&  \
                       php              \
                       php-cli          \
                       php-common       \
-		      php_curl         \
                       php-gd           \
                       php-fpm          \
 		      php-imap         \
