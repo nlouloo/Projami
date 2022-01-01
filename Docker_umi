@@ -25,6 +25,7 @@ RUN apt-get update  -yqq           &&  \
                       php-opcache      \
                       php-soap         \
                       php-xml          \
+		      postgresql       \
                       php-zip      &&  \
     apt-get -y clean all           &&  \
     mkdir /projrun                 &&  \
