@@ -58,7 +58,7 @@ COPY /projrun/config/php.ini     /etc/php/8.0/fpm/php.ini
 COPY /projrun/config/www.conf    /etc/php/8.0/fpm/pool.d/www.conf
 COPY /projrun/config/default     /etc/nginx/sites-enabled/default
 COPY /projrun/config/parameters.php   /pvol_files/files/config/parameters.php
-
+COPY /projrun/config/parametersLocation.php  /var/www/html/projeqtor/tool/parametersLocation.php
 
 
 
