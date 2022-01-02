@@ -43,7 +43,7 @@ RUN apt-get update     -yqq         &&  \
 
 COPY files/* /projrun/
 
-RUN chmod a+x /projrun/* && \
+RUN chmod -R a+x /projrun/* && \
     chown -R ${OPS_USER}:${OPS_USER} /projrun
     
 USER ${OPS_USER}
@@ -55,4 +55,4 @@ RUN wget -q https://jztkft.dl.sourceforge.net/project/projectorria/projeqtorV9.3
     
 
 
-CMD /projrun/run_tail.sh
+CMD /projrun/run_nginx.sh
