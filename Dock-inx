@@ -31,6 +31,8 @@ RUN apt-get update     -yqq         &&  \
     mkdir /projrun                   && \
     mkdir /projtemp                  && \
     mkdir /pvol_files                && \
+    mkdir /pvol_files/files          && \
+    mkdit /pvol_files/files/config   && \
     chown -R ${OPS_USER}:${OPS_USER} /projrun       && \   
     chown -R ${OPS_USER}:${OPS_USER} /projtemp      && \
     chown -R ${OPS_USER}:${OPS_USER} /pvol_files    && \
