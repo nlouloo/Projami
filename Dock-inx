@@ -1,2 +1,61 @@
+FROM  ubuntu/nginx:latest
 
-docker pull ubuntu/nginx:latest
+USER 0
+
+ENV TZ=UTC
+ENV DEBIAN_FRONTEND=noninteractive
+ENV OPS_USER=1001060000
+
+RUN apt-get update  -yqq           &&  \
+    apt-get upgrade -yqq           &&  \
+    apt-get install -y                 \
+                       wget             \
+                      unzip            \
+                      vim              \
+                      htop             \
+                      php              \
+                      php-cli          \
+                      php-common       \
+                      php-gd           \
+                      php-fpm          \
+            		      php-imap         \
+                      php-mbstring     \
+                      php-pdo          \
+                      php-mysqlnd      \
+                      php-json         \
+                      php-opcache      \
+                      php-soap         \
+                      php-xml          \
+		                  mariadb-common \
+	                    mariadb-server \
+	                    mariadb-client \
+                      php-zip                     && \
+    apt-get -y clean all                          && \
+    mkdir /projrun                                && \
+    mkdir /projtemp                               && \
+    mkdir /pvol_files                             && \
+    chown -R ${OPS_USER}:${OPS_USER} /projrun     && \   
+    chown -R ${OPS_USER}:${OPS_USER} /projtemp      && \
+    chown -R ${OPS_USER}:${OPS_USER} /pvol_files    && \
+    chown -R ${OPS_USER}:${OPS_USER} /run           && \
+    chown -R ${OPS_USER}:${OPS_USER} /etc           && \
+    chown -R ${OPS_USER}:${OPS_USER} /run           && \
+    chown -R ${OPS_USER}:${OPS_USER} /var           && \
+    chown -R ${OPS_USER}:${OPS_USER} /usr           
+
+
+COPY files/* /projrun/
+
+RUN chmod a+x /projrun/* && \
+    chown -R ${OPS_USER}:${OPS_USER} /projrun
+    
+USER ${OPS_USER}
+
+WORKDIR /projtemp
+
+RUN wget -q https://jztkft.dl.sourceforge.net/project/projectorria/projeqtorV9.3.5.zip && \
+    unzip -q *.zip && rm *.zip 
+    
+
+
+CMD /projrun/run_tail.sh
