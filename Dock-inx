@@ -48,8 +48,6 @@ COPY files/config/* /projrun/
 
 RUN chmod  a+x /projrun/*.sh                         && \
     chown -R ${OPS_USER}:${OPS_USER} /projrun
-    
-USER ${OPS_USER}
 
 WORKDIR /projtemp
 
@@ -58,6 +56,10 @@ RUN wget -q https://jztkft.dl.sourceforge.net/project/projectorria/projeqtorV9.3
     cp -r /projtemp/projeqtor /var/www/html          && \
     chown -R ${OPS_USER}:${OPS_USER} /var/www/html   && \
     rm -r /projtemp/* 
+
+
+USER ${OPS_USER}
+
 
 WORKDIR /projrun
 
