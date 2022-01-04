@@ -39,5 +39,4 @@ $paramReportTempDirectory = '/pvol_files/files/report/';
 $paramMemoryLimitForPDF = '512';
 $logFile = '/pvol_files/files/logs/projeqtor_${date}.log';  
 $logLevel = '1';
-$enforce-utf8 = 1;
-?>
+
