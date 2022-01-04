@@ -1,18 +1,16 @@
- 
- 
-<?php
+ <?php
 // 
 // File location : /pvol_files/files/config/parameters.php
 // =======================================================================================
 // Automatically generated parameter file  getenv("LANGUAGE")
 // =======================================================================================
 $paramDbType =        'mysql';  
-$paramDbHost =        getenv("SCAPPDB_SERVICE_HOST");  
-$paramDbPort =        getenv("SCAPPDB_SERVICE_PORT_MARIADB");  
-$paramDbUser =        getenv("MYSQL_USER");        
-$paramDbPassword =    getenv("MYSQL_PASSWORD");  
-$paramDbName =        getenv("MYSQL_DATABASE");    
-$paramDbDisplayName = 'Digital Supply';  
+$paramDbHost =        getenv("DB_HOST");  
+$paramDbPort =        getenv("DB_PORT");  
+$paramDbUser =        getenv("DB_USER");        
+$paramDbPassword =    getenv("DB_PASSWORD");  
+$paramDbName =        getenv("DB_NAME");    
+//$paramDbDisplayName = 'Digital Supply';  
 $paramDbPrefix =      '';
 $SslKey =             '';
 $SslCert = '';
@@ -33,12 +31,13 @@ $paramDefaultLocale = 'en';
 $paramDefaultTimezone = 'Europe/Paris';
 $currency = '€';
 $currencyPosition = 'after';
-$paramAttachmentDirectory = '/pvol_files/files/attach/';   
-$documentRoot = '/pvol_files/files/documents/';  
-$paramAttachmentMaxSize = '1485760';  
+//$paramAttachmentDirectory = '/pvol_files/files/attach/';   
+//$documentRoot = '/pvol_files/files/documents/';  
+//$paramAttachmentMaxSize = '1485760';  
 $AttachmentMaxSizeMail = '1024000';
 $paramReportTempDirectory = '/pvol_files/files/report/';  
 $paramMemoryLimitForPDF = '512';
 $logFile = '/pvol_files/files/logs/projeqtor_${date}.log';  
 $logLevel = '1';
+$enforce-utf8 = 1;
 ?>
