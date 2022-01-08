@@ -70,7 +70,7 @@ RUN mv /projrun/nginx.conf  /etc/nginx/nginx.conf             && \
     mv /projrun/default     /etc/nginx/sites-enabled/default    && \
     mv /projrun/parameters.php   /pvol_files/files/config/parameters.php && \
     mv /projrun/parametersLocation.php  /var/www/html/projeqtor/tool/parametersLocation.php && \
-    mv /projrun/projector.js            /var/www/html/projeqtor/view/js/projector.js        && \
+    mv /projrun/projeqtor.js            /var/www/html/projeqtor/view/js/projeqtor.js        && \
     mkdir /pvol_files/files/logs  
 
 
