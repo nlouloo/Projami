@@ -54,7 +54,7 @@ WORKDIR /projtemp
 
 RUN wget -q https://deac-ams.dl.sourceforge.net/project/dolibarr/Dolibarr%20ERP-CRM/14.0.5/dolibarr-14.0.5.zip && \
     unzip -q *.zip && rm *.zip                       && \
-    cp -r /projtemp/* /var/www/html          && \
+    cp -r /projtemp/dolibarr-14.0.5/htdocs  /var/www/html          && \
     chown -R ${OPS_USER}:${OPS_USER} /var/www/html   && \
     rm -r /projtemp/* 
 
